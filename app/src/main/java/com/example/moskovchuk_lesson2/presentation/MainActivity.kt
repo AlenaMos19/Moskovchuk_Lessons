@@ -1,7 +1,8 @@
-package com.example.moskovchuk_lesson2
+package com.example.moskovchuk_lesson2.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.moskovchuk_lesson2.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
