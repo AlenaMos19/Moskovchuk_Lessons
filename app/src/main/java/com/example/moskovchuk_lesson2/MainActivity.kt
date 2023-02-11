@@ -1,11 +1,10 @@
 package com.example.moskovchuk_lesson2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import com.example.moskovchuk_lesson2.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,9 +17,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val changeableText: TextView = findViewById(R.id.textView)
-        val changeableButtonText: Button = findViewById(R.id.button_next_screen)
+        val buttonNext: Button = findViewById(R.id.button_next_screen)
         val changeButton: Button = findViewById(R.id.button_change_language)
-        changeableButtonText.text = buttonTextRU
+        buttonNext.text = buttonTextRU
         changeableText.text = textRussian
         changeButton.setOnClickListener{
             changeableText.text = if (changeableText.text == textRussian) {
@@ -28,11 +27,15 @@ class MainActivity : AppCompatActivity() {
             } else {
                 textRussian
             }
-            changeableButtonText.text = if (changeableButtonText.text == buttonTextRU){
+            buttonNext.text = if (buttonNext.text == buttonTextRU){
                 buttonTextENG
             } else {
                 buttonTextRU
             }
+        }
+        buttonNext.setOnClickListener{
+            val intent = Intent(this@MainActivity, SecondScreenActivity::class.java)
+            startActivity(intent)
         }
 
     }
