@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:flow_firstHorizontalStyle="packed"
@@ -30,11 +29,11 @@
 
   <TextView
       android:id="@+id/textView"
+      style="@style/bid_text"
       android:layout_width="291dp"
       android:layout_height="71dp"
-      style="@style/bid_text"
-      android:text="ИТ-решения для развития бизнеса"
       android:paddingRight="10dp"
+      android:text="@string/company"
       app:layout_constraintEnd_toEndOf="@+id/textView2"
       app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -45,44 +44,128 @@
       android:layout_height="37dp"
       android:layout_marginTop="2dp"
       android:paddingRight="10dp"
-      android:text="Разработка программного обеспечения"
+      android:text="@string/short_about"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView" />
 
   <TextView
       android:id="@+id/textView3"
+      style="@style/bid_text"
       android:layout_width="407dp"
       android:layout_height="29dp"
       android:paddingLeft="10dp"
       android:paddingRight="10dp"
-      android:text="О нас:"
+      android:text="@string/about_us"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textView2"
-      style="@style/bid_text" />
+      app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
   <TextView
       android:id="@+id/textView4"
+      style="@style/small_text"
       android:layout_width="406dp"
       android:layout_height="77dp"
       android:paddingLeft="10dp"
       android:paddingRight="10dp"
-      android:text="Aston - компания по разработке ПО с полным циклом услуг. Уже 15 лет мы помогаем заказчикам по всему миру трансформировать бизнес, создавая эффективные мобильные и десктопные решения."
+      android:text="@string/about_company"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/textView3"
-      style="@style/small_text" />
+      app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
   <TextView
       android:id="@+id/textView5"
+      style="@style/bid_text"
       android:layout_width="407dp"
       android:layout_height="28dp"
+      android:gravity="center"
       android:paddingLeft="10dp"
       android:paddingRight="10dp"
-      android:text="Офисы"
-      style="@style/bid_text"
-      android:gravity="center"
+      android:text="@string/office"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
+  <com.google.android.material.chip.ChipGroup
+      android:id="@+id/chipGroup"
+      android:layout_width="404dp"
+      android:layout_height="118dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.428"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+    <com.google.android.material.chip.Chip
+        style="@style/office"
+        android:text="Москва" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/office"
+        android:text="Казань"/>
+
+    <com.google.android.material.chip.Chip
+        style="@style/office"
+        android:text="Ростов-на-Дону" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/office"
+        android:text="Минск" />
+
+    <com.google.android.material.chip.Chip
+        style="@style/office"
+        android:text="Гомель" />
+
+  </com.google.android.material.chip.ChipGroup>
+
+
+  <Button
+      android:id="@+id/button2"
+      style="@style/style_of_button"
+      android:text="Контакты"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/button3"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/button"
+      app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+      app:layout_constraintVertical_bias="0.506" />
+
+  <Button
+      android:id="@+id/button"
+      style="@style/style_of_button"
+      android:text="Вакансии"
+      app:flow_firstHorizontalStyle="packed"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/button2"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+      app:layout_constraintVertical_bias="0.506" />
+
+  <Button
+      android:id="@+id/button3"
+      style="@style/style_of_button"
+      android:text="Галерея"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toEndOf="@+id/button2"
+      app:layout_constraintTop_toBottomOf="@+id/chipGroup"
+      app:layout_constraintVertical_bias="0.506" />
+
+
+  <androidx.constraintlayout.widget.Barrier
+      android:id="@+id/barrier3"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:barrierDirection="bottom"
+      app:constraint_referenced_ids="button2"
+      tools:layout_editor_absoluteY="644dp" />
+
+  <androidx.constraintlayout.widget.Group
+      android:id="@+id/group_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:constraint_referenced_ids="button,button3,button2" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
