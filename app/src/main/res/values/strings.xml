@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Moskovchuk_Lesson2</string>
+    <string name="about_company">Aston - компания по разработке ПО с полным циклом услуг. Уже 15 лет мы помогаем заказчикам по всему миру трансформировать бизнес, создавая эффективные мобильные и десктопные решения.</string>
+    <string name="office">Офисы</string>
+    <string name="about_us">О нас:</string>
+    <string name="short_about">Разработка программного обеспечения</string>
+    <string name="company">ИТ-решения для развития бизнеса</string>
 </resources>

@@ -7,6 +7,10 @@ android {
     namespace 'com.example.moskovchuk_lesson2'
     compileSdk 32
 
+    viewBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "com.example.moskovchuk_lesson2"
         minSdk 21
@@ -30,6 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
 }
 
 dependencies {
