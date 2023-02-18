@@ -8,6 +8,7 @@ import android.graphics.Rect
 import android.util.AttributeSet
 import android.view.View
 import java.lang.Math.min
+import java.util.*
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -47,6 +48,8 @@ class ClockView(
         drawNumerals(canvas)
 
         drawNumerals(canvas)
+
+        drawHands(canvas)
 
 
     }
@@ -96,5 +99,32 @@ class ClockView(
             }
         }
     }
+
+    private fun drawHands(canvas: Canvas?) {
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR)
+
+        drawHandLine(canvas, (hour + calendar.get(Calendar.MINUTE) / 60f) * 5f, HandType.HOUR)
+        drawHandLine(canvas, calendar.get(Calendar.MINUTE).toFloat(), HandType.MINUTE)
+        drawHandLine(canvas, calendar.get(Calendar.SECOND).toFloat(), HandType.SECONDS)
+
+        postInvalidateDelayed(500)
+        invalidate()
+
+        mPaint.reset()
+    }
+
+        private fun drawHandLine(canvas: Canvas?, value: Float, handType: HandType) {
+            val angle = Math.PI * value / 30 - Math.PI / 2
+
+            val handRadius = when (handType) {
+                HandType.HOUR -> mRadius - mRadius / 3
+                HandType.MINUTE -> mRadius - mRadius / 6
+                HandType.SECONDS -> mRadius - mRadius / 9
+            }
+        }
+
+        private enum class HandType { HOUR, MINUTE, SECONDS }
+
 
 }
