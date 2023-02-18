@@ -51,6 +51,7 @@ class ClockView(
 
         drawHands(canvas)
 
+        drawCenterCircle(canvas)
 
     }
 
@@ -122,6 +123,11 @@ class ClockView(
                 HandType.MINUTE -> mRadius - mRadius / 6
                 HandType.SECONDS -> mRadius - mRadius / 9
             }
+        }
+
+        private fun drawCenterCircle(canvas: Canvas?) {
+            mPaint.color = Color.YELLOW
+            canvas?.drawCircle(mWight / 2f, mHeight / 2f, 2f, mPaint)
         }
 
         private enum class HandType { HOUR, MINUTE, SECONDS }
