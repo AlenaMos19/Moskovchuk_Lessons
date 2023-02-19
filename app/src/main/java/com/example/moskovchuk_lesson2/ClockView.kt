@@ -4,9 +4,10 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
+import androidx.core.content.ContextCompat
 import java.lang.Math.min
 import java.util.*
 import kotlin.math.cos
@@ -24,8 +25,6 @@ class ClockView(
     private var mHeight: Int = 0
     private var mWight: Int = 0
 
-    private val mClockHours = intArrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
-
     private var clockInnerPadding: Int = 0
 
     private var mRadius: Int = 0
@@ -34,7 +33,16 @@ class ClockView(
 
     private var isInitialized: Boolean = false
 
-    private val mRect = Rect()
+    private val handSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, context.resources.displayMetrics)
+
+    private var borderColor = ContextCompat.getColor(context, R.color.defaultBorderColor)
+    private var hourHandsColor = ContextCompat.getColor(context, R.color.defaultHourHandsColor)
+    private var minHandsColor = ContextCompat.getColor(context, R.color.defaultMinHandsColor)
+    private var secondsHandColor = ContextCompat.getColor(context, R.color.defaultSecondsHandsColor)
+
+    init {
+        setUpAttributes(attributeSet)
+    }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -45,14 +53,32 @@ class ClockView(
 
         drawClockShape(canvas)
 
-        drawNumerals(canvas)
-
-        drawNumerals(canvas)
-
         drawHands(canvas)
+    }
 
-        drawCenterCircle(canvas)
+    fun setBorderColor(value: Int) {
+        borderColor = ContextCompat.getColor(context, value)
+    }
 
+    fun setMinHandsColor(value: Int) {
+        minHandsColor = ContextCompat.getColor(context, value)
+    }
+    fun setHourHandsColor(value: Int) {
+        hourHandsColor = ContextCompat.getColor(context, value)
+    }
+
+    fun setSecondsHandColor(value: Int) {
+        secondsHandColor = ContextCompat.getColor(context, value)
+    }
+    private fun setUpAttributes(attributes: AttributeSet?) {
+        val typedArray = context.theme.obtainStyledAttributes(attributes, R.styleable.ClockView, 0, 0)
+
+        borderColor = ContextCompat.getColor(context, typedArray.getResourceId(R.styleable.ClockView_borderColor, R.color.defaultBorderColor))
+        minHandsColor = ContextCompat.getColor(context, typedArray.getResourceId(R.styleable.ClockView_minHandsColor, R.color.defaultMinHandsColor))
+        hourHandsColor = ContextCompat.getColor(context, typedArray.getResourceId(R.styleable.ClockView_hourHandsColor, R.color.defaultHourHandsColor))
+        secondsHandColor = ContextCompat.getColor(context, typedArray.getResourceId(R.styleable.ClockView_secondsHandColor, R.color.defaultSecondsHandsColor))
+
+        typedArray.recycle()
     }
 
     private fun initialize(){
@@ -79,28 +105,6 @@ class ClockView(
         mPaint.reset()
     }
 
-    private fun drawNumerals(canvas: Canvas?) {
-        mPaint.textSize = 2f
-        mPaint.isFakeBoldText = true
-        mPaint.color = Color.BLACK
-
-
-        for (hour in mClockHours) {
-            var tmp = hour.toString()
-
-            mPaint.getTextBounds(tmp, 0, tmp.length, mRect)
-            val angle = Math.PI / 6 * (hour - 3)
-            val x = (mWight / 2 + cos(angle) * mRadius - mRect.width() / 2).toFloat()
-            val y = ((mHeight / 2).toDouble() + sin(angle) * mRadius + (mRect.height() / 2)).toFloat()
-
-            if (listOf(12, 3, 6, 9).contains(hour)) {
-                canvas?.drawText(tmp, x, y, mPaint)
-            } else {
-                canvas?.drawText("·", x, y, mPaint)
-            }
-        }
-    }
-
     private fun drawHands(canvas: Canvas?) {
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR)
@@ -123,14 +127,23 @@ class ClockView(
                 HandType.MINUTE -> mRadius - mRadius / 6
                 HandType.SECONDS -> mRadius - mRadius / 9
             }
-        }
+            mPaint.color =
+                when (handType)
+                {HandType.SECONDS -> secondsHandColor
+                 HandType.HOUR -> hourHandsColor
+                    else -> {minHandsColor}
+                }
+            mPaint.strokeWidth = if (handType == HandType.SECONDS) handSize else handSize * 2
+            mPaint.strokeCap = Paint.Cap.ROUND
 
-        private fun drawCenterCircle(canvas: Canvas?) {
-            mPaint.color = Color.YELLOW
-            canvas?.drawCircle(mWight / 2f, mHeight / 2f, 2f, mPaint)
+            canvas?.drawLine(
+                (mWight / 2).toFloat(),
+                (mHeight / 2).toFloat(),
+                (mWight / 2 + cos(angle) * handRadius).toFloat(),
+                (mHeight / 2 + sin(angle) * handRadius).toFloat(),
+                mPaint
+            )
         }
 
         private enum class HandType { HOUR, MINUTE, SECONDS }
-
-
 }
