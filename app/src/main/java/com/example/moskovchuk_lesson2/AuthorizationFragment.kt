@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Switch
 import com.example.moskovchuk_lesson2.databinding.FragmentAuthorizationBinding
 
 class AuthorizationFragment : Fragment() {
@@ -34,6 +35,7 @@ class AuthorizationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        showPassword()
         changePassButton()
         checkPassword()
 
@@ -64,6 +66,12 @@ class AuthorizationFragment : Fragment() {
         }
     }
 
+    private fun showPassword() {
+        binding.switchForPassword.setOnClickListener{
+            binding.password.isEnabled = binding.switchForPassword.isChecked
+        }
+    }
+
     companion object {
 
         private const val CORRECT_PASS = "12345"
@@ -81,3 +89,4 @@ class AuthorizationFragment : Fragment() {
             }
     }
 }
+
