@@ -45,7 +45,7 @@
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_count"
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="password"
@@ -58,6 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Войти"
+            android:enabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
