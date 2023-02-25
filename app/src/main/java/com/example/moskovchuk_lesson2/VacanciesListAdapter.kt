@@ -26,8 +26,5 @@ class VacanciesListAdapter(private val vacanciesList : ArrayList<VacancyItem>): 
         val vacancyItem = vacanciesList[position]
         holder.vacName.text = vacancyItem.name
         holder.vacSalary.text = vacancyItem.salary
-        holder.itemView.setOnClickListener{
-            true
-        }
     }
 }

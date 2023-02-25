@@ -28,4 +28,11 @@
     <string name="salary_mid">200</string>
     <string name="salary_sen">300</string>
     <string name="salary_lead">400</string>
+
+    <string name="office_Moscow">г. Москва</string>
+    <string name="office_Minsk">г. Минск</string>
+    <string name="office_Gomel">г. Гомель</string>
+    <string name="office_Spb">г. Санкт-Петербург</string>
+    <string name="office_Kazan">г. Казань</string>
+
 </resources>

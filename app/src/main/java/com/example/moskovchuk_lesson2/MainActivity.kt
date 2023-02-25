@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-    //    supportFragmentManager.beginTransaction()
-     //       .replace(R.id.container, AuthorizationFragment.newInstance())
-     //       .commit()
+       supportFragmentManager.beginTransaction()
+            .add(R.id.container, AuthorizationFragment.newInstance())
+            .commit()
 
         val navController = findNavController(R.id.navigation_container)
         val appBarConfig = AppBarConfiguration(setOf(R.id.bottom_main,

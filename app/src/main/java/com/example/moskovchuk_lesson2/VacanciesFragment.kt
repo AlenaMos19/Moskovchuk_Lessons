@@ -32,8 +32,6 @@ class VacanciesFragment : Fragment() {
         recyclerViewVac.setHasFixedSize(true)
         vacancyAdapter = VacanciesListAdapter(vacancyArrayList)
         recyclerViewVac.adapter = vacancyAdapter
-
-
     }
 
     private fun dataInitialize(){

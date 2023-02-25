@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Switch
 import com.example.moskovchuk_lesson2.databinding.FragmentAuthorizationBinding
 
 class AuthorizationFragment : Fragment() {
@@ -48,7 +47,6 @@ class AuthorizationFragment : Fragment() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 binding.comeInButton.isEnabled = true
-
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -59,9 +57,7 @@ class AuthorizationFragment : Fragment() {
     private fun checkPassword(){
         binding.password.setOnClickListener() {
             if (binding.password.toString() == CORRECT_PASS) {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.container, MenuFragment.newInstance())
-                    .commit()
+                goToMainScreen()
             } else {TODO()}
         }
     }
@@ -70,6 +66,13 @@ class AuthorizationFragment : Fragment() {
         binding.switchForPassword.setOnClickListener{
             binding.password.isEnabled = binding.switchForPassword.isChecked
         }
+    }
+
+    private fun goToMainScreen(){
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.container, MainFragment.newInstance())
+            .remove(this)
+            .commit()
     }
 
     companion object {
