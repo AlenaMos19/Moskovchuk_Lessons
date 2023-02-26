@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.moskovchuk_lesson2.databinding.FragmentAuthorizationBinding
 
 class AuthorizationFragment : Fragment() {
@@ -37,7 +38,6 @@ class AuthorizationFragment : Fragment() {
         showPassword()
         changePassButton()
         checkPassword()
-
     }
 
     private fun changePassButton() {
@@ -58,7 +58,9 @@ class AuthorizationFragment : Fragment() {
         binding.password.setOnClickListener() {
             if (binding.password.toString() == CORRECT_PASS) {
                 goToMainScreen()
-            } else {TODO()}
+            } else {
+            //   Toast.makeText(this@AuthorizationFragment, "Неверный пароль")
+            }
         }
     }
 

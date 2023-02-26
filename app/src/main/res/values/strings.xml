@@ -35,4 +35,7 @@
     <string name="office_Spb">г. Санкт-Петербург</string>
     <string name="office_Kazan">г. Казань</string>
 
+    <string name="more_about_moscow">Адрес: Пресненская набережная, д.6, стр.2, БЦ "Башня Империя", 3 подъезд, 53 этаж, офис 13, Россия</string>
+    <string name="more_about_minsk">Адрес: пр-т Победителей, 7А, Беларусь</string>
+
 </resources>

@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moskovchuk_lesson2.databinding.FragmentAuthorizationBinding
+import com.example.moskovchuk_lesson2.databinding.FragmentVacanciesBinding
 
 class VacanciesFragment : Fragment() {
+
+    lateinit var binding: FragmentVacanciesBinding
 
     private lateinit var vacancyAdapter: VacanciesListAdapter
     private lateinit var recyclerViewVac: RecyclerView
@@ -20,7 +24,8 @@ class VacanciesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_vacancies, container, false)
+        binding = FragmentVacanciesBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -88,5 +93,10 @@ class VacanciesFragment : Fragment() {
             val vacancy = VacancyItem(vacancyName[i], vacancySalary[i])
             vacancyArrayList.add(vacancy)
         }
+    }
+
+    companion object{
+
+        fun newInstance() = VacanciesFragment()
     }
 }

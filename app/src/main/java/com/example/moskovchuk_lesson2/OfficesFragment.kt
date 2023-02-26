@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.moskovchuk_lesson2.databinding.FragmentAuthorizationBinding
+import com.example.moskovchuk_lesson2.databinding.FragmentOfficesBinding
 
 class OfficesFragment : Fragment() {
 
@@ -16,22 +18,49 @@ class OfficesFragment : Fragment() {
 
     lateinit var officeAddress: Array<String>
     lateinit var officeType: Array<String>
+
+    lateinit var binding: FragmentOfficesBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_offices, container, false)
+        binding = FragmentOfficesBinding.inflate(inflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataInitialize()
+        setupClickListener()
         val layoutManager = LinearLayoutManager(context)
         recyclerViewOff = view.findViewById(R.id.rv_list_offices)
         recyclerViewOff.layoutManager = layoutManager
         recyclerViewOff.setHasFixedSize(true)
-        officeAdapter = OfficesListAdapter(officeArrayList)
-        recyclerViewOff.adapter = officeAdapter
+
+    }
+
+    private fun setupClickListener() {
+
+        var offAdapter = OfficesListAdapter(officeArrayList)
+        recyclerViewOff.adapter = offAdapter
+
+        offAdapter.setOnItemClickListener(object : OfficesListAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                when (position){
+                    1 -> openFragment(OfficeFragmentMoscow.newInstance())
+                    2 ->openFragment(OfficeFragmentMinsk.newInstance())
+                }
+            }
+        })
+    }
+
+    private fun openFragment(f: Fragment){
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.container, f)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun dataInitialize() {
@@ -59,7 +88,11 @@ class OfficesFragment : Fragment() {
             officeArrayList.add(office)
         }
     }
+
     companion object {
+
+        fun newInstance() = OfficesFragment()
+
         const val TYPE_BY = "BY"
         const val TYPE_RU = "RU"
     }
