@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">Moskovchuk_Lesson2</string>
+    <string name="about_aston">Aston - компания по разработке ПО с полным циклом услуг. Уже 15 лет мы помогаем заказчикам по всему миру трансформировать бизнес, создавая эффективные мобильные и десктопные решения.</string>
+    <string name="header_about">О нас:</string>
+
+    <string name="vacancy_and_jun">Android developer Junior</string>
+    <string name="vacancy_and_mid">Android developer Middle</string>
+    <string name="vacancy_and_sen">Android developer Senior</string>
+    <string name="vacancy_and_lead">Android developer Lead</string>
+    <string name="vacancy_java_jun">Java developer Junior</string>
+    <string name="vacancy_java_mid">Java developer Middle</string>
+    <string name="vacancy_java_sen">Java developer Senior</string>
+    <string name="vacancy_java_lead">Java developer Lead</string>
+    <string name="vacancy_pit_jun">Python developer Junior</string>
+    <string name="vacancy_pit_mid">Python developer Middle</string>
+    <string name="vacancy_pit_sen">Python developer Senior</string>
+    <string name="vacancy_pit_lead">Python developer Lead</string>
+    <string name="vacancy_ios_jun">IOS developer Junior</string>
+    <string name="vacancy_ios_mid">IOS developer Middle</string>
+    <string name="vacancy_ios_sen">IOS developer Senior</string>
+    <string name="vacancy_ios_lead">IOS developer Lead</string>
+    <string name="vacancy_qa_jun">QA engineer Junior</string>
+    <string name="vacancy_qa_mid">QA engineer Middle</string>
+    <string name="vacancy_qa_sen">QA engineer Senior</string>
+    <string name="vacancy_qa_lead">QA engineer Lead</string>
+
+    <string name="salary_jun">100</string>
+    <string name="salary_mid">200</string>
+    <string name="salary_sen">300</string>
+    <string name="salary_lead">400</string>
+
+    <string name="office_Moscow">г. Москва</string>
+    <string name="office_Minsk">г. Минск</string>
+    <string name="office_Gomel">г. Гомель</string>
+    <string name="office_Spb">г. Санкт-Петербург</string>
+    <string name="office_Kazan">г. Казань</string>
+
+    <string name="more_about_moscow">Адрес: Пресненская набережная, д.6, стр.2, БЦ "Башня Империя", 3 подъезд, 53 этаж, офис 13, Россия</string>
+    <string name="more_about_minsk">Адрес: пр-т Победителей, 7А, Беларусь</string>
+
 </resources>
